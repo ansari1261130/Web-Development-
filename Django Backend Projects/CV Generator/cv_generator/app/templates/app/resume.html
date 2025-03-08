@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Resume</title>
+    <style> 
+        h1{
+            display:flex;
+            justify-content: center;
+            align-item: center;
+            color:red;
+        }
+    </style>
+<body>
+    <header class="profile-header">
+        <h1 class="name title">{{ user_profile.name }}</h1>
+        <div class="contact-info">
+            <div class="phone">
+                <svg height="24" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Phone Icon">
+                    <path d="M0 0h48v48h-48z" fill="none" />
+                    <path d="M13.25 21.59c2.88 5.66 7.51 10.29 13.18 13.17l4.4-4.41c.55-.55 1.34-.71 2.03-.49 2.24.74 4.65 1.14 7.14 1.14 1.11 0 2 .89 2 2v7c0 1.11-.89 2-2 2-18.78 0-34-15.22-34-34 0-1.11.9-2 2-2h7c1.11 0 2 .89 2 2 0 2.49.4 4.9 1.14 7.14.22.69.06 1.48-.49 2.03l-4.4 4.42z" />
+                </svg>
+                <a href="tel:+91-{{ user_profile.phone }}">+91-{{ user_profile.phone }}</a>
+            </div>
+            <div class="email">
+                <svg height="24" width="24" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-label="Email Icon">
+                    <rect height="358.87" style="fill:#F1F5F7;" width="357.904" x="77.045" y="76.565" />
+                    <path d="M256.002,293.738l178.947,141.697v-279.74L256.002,293.738z" style="fill:#DCE6EA;" />
+                    <path d="M449.861,76.565h-14.912L256.002,218.26L77.045,76.565H62.134c-24.693,0-44.737,20.094-44.737,44.858v269.152c0,24.759,20.044,44.859,44.737,44.859h14.911v-279.74l178.957,138.014l178.947-138.047v279.773h14.912c24.699,0,44.742-20.101,44.742-44.859V121.424C494.604,96.66,474.561,76.565,449.861,76.565z" style="fill:#F84437;" />
+                </svg>
+                <a href="mailto:{{ user_profile.email }}">{{ user_profile.email }}</a>
+            </div>
+        </div>
+    </header>
+    <main class="profile-content">
+        <section class="introduction">
+            <h2>Introduction</h2>
+            <p>{{ user_profile.introduction }}</p>
+        </section>
+        <section class="education">
+            <h2>Education</h2>
+            <ul>
+                <li>Schooling: {{ user_profile.school }}</li>
+                <li>{{ user_profile.degree }} from {{ user_profile.university }}</li>
+            </ul>
+        </section>
+        <section class="experience">
+            <h2>Experience</h2>
+            <p>{{ user_profile.experience }}</p>
+        </section>
+        <section class="skills">
+            <h2>Skills</h2>
+            <ul>
+                {% for skill in user_profile.skills %}
+                <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="certifications">
+            <h2>Certifications</h2>
+            <ul>
+                {% for cert in user_profile.certifications %}
+                <li>{{ cert }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="projects">
+            <h2>Projects</h2>
+            <ul>
+                {% for project in user_profile.projects %}
+                <li>{{ project }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

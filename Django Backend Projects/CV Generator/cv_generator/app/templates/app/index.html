@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="text-center">
+            <h1 class="display-4">CV Generator</h1>
+            <p class="lead">Fill out your details to generate a professional CV</p>
+            <hr class="my-4">
+        </div>
+        
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8 col-lg-6">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label fw-semibold">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="e.g., ABC">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label fw-semibold">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="e.g., abc@example.com">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="linkedin" class="form-label fw-semibold">Linkedin</label>
+                        <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="e.g., linkedin url">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="github" class="form-label fw-semibold">GitHub</label>
+                        <input type="url" class="form-control" id="github" name="github" placeholder="e.g., github url">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="phone" class="form-label fw-semibold">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="e.g., 1234567890">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="location" class="form-label fw-semibold">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" placeholder="e.g., abc,UP">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="introduction" class="form-label fw-semibold">Introduction</label>
+                        <textarea class="form-control" id="summary" name="introduction" rows="3" placeholder="Briefly describe yourself..."></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="degree" class="form-label fw-semibold">Degree</label>
+                        <input type="text" class="form-control" id="degree" name="degree" placeholder="e.g., B-Tech CSE">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="school" class="form-label fw-semibold">School</label>
+                        <input type="text" class="form-control" id="school" name="school" placeholder="e.g., CMS">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="university" class="form-label fw-semibold">University</label>
+                        <input type="text" class="form-control" id="university" name="university" placeholder="e.g., LU">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="experience" class="form-label fw-semibold">Work Experience</label>
+                        <textarea class="form-control" id="previous_work" name="experience" rows="3" placeholder="Describe your previous roles..."></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="skills" class="form-label fw-semibold">Skills</label>
+                        <textarea class="form-control" id="skills" name="skills" rows="3" placeholder="e.g., Python, Java, SQL"></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="certifications" class="form-label fw-semibold">Certifications</label>
+                        <textarea class="form-control" id="certifications" name="certifications" rows="3" placeholder="e.g., ai and ml"></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="projects" class="form-label fw-semibold">Projects</label>
+                        <textarea class="form-control" id="projects" name="projects" rows="3" placeholder="e.g., e-commerce website"></textarea>
+                    </div>
+                    <a href="{% url "list" %}"><button type="submit" class="btn btn-primary w-100 mt-4">Generate CV</button></a>
+                </form>
+                {% if id %}
+                    <p>Profile created successfully! View <a href="{% url 'resume' id %}">your resume</a>.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
